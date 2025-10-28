@@ -38,10 +38,10 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
-    "ezmsg-core": ("https://ezmsg.org/ezmsg/", None),
-    "ezmsg-sigproc": ("https://ezmsg.org/ezmsg-sigproc/", None),
-    "ezmsg-learn": ("https://ezmsg.org/ezmsg-learn/", None),
-    "ezmsg-lsl": ("https://ezmsg.org/ezmsg-lsl/", None),
+    "ezmsg": ("https://ezmsg.org/ezmsg/", None),
+    "ezmsg.sigproc": ("https://ezmsg.org/ezmsg-sigproc/", None),
+    "ezmsg.learn": ("https://ezmsg.org/ezmsg-learn/", None),
+    "ezmsg.lsl": ("https://ezmsg.org/ezmsg-lsl/", None),
 }
 intersphinx_disabled_domains = ["std"]
 
