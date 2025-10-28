@@ -2,14 +2,6 @@
 name = "ezmsg-docs"
 version = "1.0.0"
 description = "Documentation for the ezmsg ecosystem"
-authors = [
-  { name = "Griffin Milsap", email = "griffin.milsap@gmail.com" },
-  { name = "Preston Peranich", email = "pperanich@gmail.com" },
-  { name = "Chadwick Boulay", email = "chadwick.boulay@gmail.com" },
-  { name = "Konrad Pilch", email = "kpilch@blackrockneuro.com" },
-]
-license = { file = "LICENSE" }
-readme = "README.md"
 requires-python = ">=3.10"
 dependencies = []
 
@@ -25,7 +17,3 @@ docs = [
   "sphinx_copybutton",
   "sphinx_design",
 ]
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
