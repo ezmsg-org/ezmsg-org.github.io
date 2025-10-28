@@ -52,7 +52,7 @@ A substantial list of extensions exist for ezmsg. One can install extensions as 
     pip install ezmsg[extension_name]
 
 
-See :doc:`Extensions <../extensions/content-extensions>` for more information.
+See :doc:`Extensions <extensions/content-extensions>` for more information.
 
 |ezmsg_logo_small| Documentation Overview
 *******************************************
@@ -87,7 +87,7 @@ These are a few high-level topics to help you learn more about ezmsg and the ezm
 
    * - :doc:`reference/content-reference`
 
-       APIs for ezmsg
+       API links and glossary
 
      - :doc:`how-tos/content-howtos`
 
