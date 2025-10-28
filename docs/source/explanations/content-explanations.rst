@@ -3,7 +3,7 @@ What is ezmsg?
 
 .. under construction - Griffin to add content
 
-This section of the documentation aims to provide a comprehensive overview of the `ezmsg` framework from a design and decision-making perspective. These are four "explainer" documents for users to gain an understanding of the major parts of `ezmsg` and why they are implemented the way that they are. This page provides a high-level overview of the framework, its design philosophy, and motivations. The remaining pages delve into the design details of `ezmsg` core components, the in-built message format `AxisArray` and the signal processing tools provided in the `ezmsg-sigproc` extension to `ezmsg` respectively.
+This section of the documentation aims to provide a comprehensive overview of the `ezmsg` framework from a design and decision-making perspective. These explainer documents help users gain an understanding of the major parts of `ezmsg` and why they are implemented the way that they are. This page provides a high-level overview of the framework, its design philosophy, and motivations. The remaining pages delve into the design details of `ezmsg` core components and the in-built message format `AxisArray`.
 
 .. toctree::
     :maxdepth: 1
@@ -28,7 +28,7 @@ Other ways to learn about `ezmsg` include following our :doc:`Tutorial <../tutor
 - **Minimal boilerplate code** required for `ezmsg` components: `ezmsg` is designed to minimize the amount of boilerplate code required to create new components. This allows users to focus on the core functionality of their components rather than getting bogged down in implementation details.
 - Provides an **in-built message format** (`AxisArray`): `AxisArray` is a message format for handling multi-dimensional arrays with labeled axes. It is designed to facilitate the organization, manipulation, and analysis of complex data structures commonly encountered in signal processing and related fields. See :doc:`AxisArray <axisarray>` for more information.
 - Provides a **command line interface**: `ezmsg` includes a command line interface (CLI) that allows users to manage and interact with signal processing pipelines. The CLI provides commands for starting, stopping, and visualising pipelines.
-- Provides fundamental **signal processing units**: through the extension `ezmsg-sigproc`, users of `ezmsg` have access to over 20 in-built signal processing units, that can be used both in an `ezmsg` context as well as outside of it. See :doc:`sigproc <sigproc>` for more information.
+- Provides fundamental **signal processing units**: through the extension `ezmsg-sigproc`, users of `ezmsg` have access to over 20 in-built signal processing units, that can be used both in an `ezmsg` context as well as outside of it. See the `ezmsg-sigproc documentation <https://www.ezmsg.org/ezmsg-sigproc/>`_ for more information.
 - **Extensible** via extensions: `ezmsg` is designed to be extensible, allowing users to create and share custom components and extensions. This extensibility enables users to tailor the framework to their specific needs and contribute to the broader `ezmsg` community. See :doc:`Extensions <../extensions/content-extensions>` for more information.
 - **Open-source**: `ezmsg` is an open-source project, released under the permissive MIT license. This encourages collaboration and contributions from the community, fostering a vibrant ecosystem of users and developers.
 

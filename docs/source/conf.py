@@ -15,6 +15,7 @@ extensions = [
     "sphinx.ext.duration",
     "sphinx.ext.graphviz",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
     "sphinxext.rediraffe",
     "myst_parser",
     "sphinx_copybutton",
@@ -38,10 +39,10 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
-    "ezmsg": ("https://ezmsg.org/ezmsg/", None),
-    "ezmsg.sigproc": ("https://ezmsg.org/ezmsg-sigproc/", None),
-    "ezmsg.learn": ("https://ezmsg.org/ezmsg-learn/", None),
-    "ezmsg.lsl": ("https://ezmsg.org/ezmsg-lsl/", None),
+    "ezmsg": ("https://www.ezmsg.org/ezmsg/", None),
+    "ezmsg.sigproc": ("https://www.ezmsg.org/ezmsg-sigproc/", None),
+    "ezmsg.learn": ("https://www.ezmsg.org/ezmsg-learn/", None),
+    "ezmsg.lsl": ("https://www.ezmsg.org/ezmsg-lsl/", None),
 }
 intersphinx_disabled_domains = ["std"]
 

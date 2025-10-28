@@ -92,7 +92,7 @@ The alternative, if you want the graphserver to use a particular address, is to 
 1. set the ``EZMSG_GRAPH_SERVER`` environment variable before running your script.
 2. start an ezmsg instance from the command line with the `serve` or `start` commands, which will allow you to specify the address and port.
 
-.. note:: For a deeper dive into the backend of ezmsg, please refer to the :doc:`../explanations/ezmsg` section. Here you will find more information about the ezmsg graphserver, how it works, and how to configure it.
+.. note:: For a deeper dive into the backend of ezmsg, please refer to the :doc:`../explanations/ezmsg-design` section. Here you will find more information about the ezmsg graphserver, how it works, and how to configure it.
 
 
 |ezmsg_logo_small| Run the pipeline using the command line
@@ -183,9 +183,9 @@ then ezmsg will output a **Graphviz** representation of the pipeline to the term
 
 .. note:: The really long numerical node identifiers are simply randomly generated unique identifiers for each connection point (since the names may be the same like `INPUT_SIGNAL`). These identifiers have no special meaning.
 
-.. warning:: This command and the ones described in the :ref:`mermaid-section` section below will only output the pipeline graph if the ezmsg system is running and has a pipeline connected to it. If you run this command when the pipeline is finished or not running, you will not get any output. Our example is so simple that it will finish very quickly, so in order to visualise the graph maybe change the `iterations` in the `CountSettings` to a larger number, e.g. 100000, so that you have time to run the command and see the output.
+.. warning:: This command and the ones described in the :ref:`mermaid-section-tutorial` section below will only output the pipeline graph if the ezmsg system is running and has a pipeline connected to it. If you run this command when the pipeline is finished or not running, you will not get any output. Our example is so simple that it will finish very quickly, so in order to visualise the graph maybe change the `iterations` in the `CountSettings` to a larger number, e.g. 100000, so that you have time to run the command and see the output.
 
-.. _mermaid-section:
+.. _mermaid-section-tutorial:
 
 Mermaid visualisation
 ===========================

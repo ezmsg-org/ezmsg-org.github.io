@@ -19,7 +19,7 @@ The former is explained below.
 |ezmsg_logo_small| The ``run()`` function
 ***********************************************************
 
-In order to run the ezmsg pipeline in any mode, your script must contain a call to ``ezmsg.core.run()``. You can consult the API reference for :doc:`run() here <../../reference/API/entrypoint>`.
+In order to run the ezmsg pipeline in any mode, your script must contain a call to ``ezmsg.core.run()``. You can consult the `API reference for run() <https://www.ezmsg.org/ezmsg/reference/API/entrypoint.html>`_.
 
 At minimum, you need to provide the components and connections of your pipeline to the ``run()`` function.
 

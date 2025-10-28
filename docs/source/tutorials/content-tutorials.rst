@@ -16,7 +16,6 @@ For more in-depth documentation of the code, please refer to the :doc:`reference
     start
     pipeline
     run
-    signalprocessing
 
 .. |ezmsg_logo_small| image:: ../_static/_images/ezmsg_logo.png
   :width: 40

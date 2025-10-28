@@ -127,14 +127,12 @@ Calling ``ezmsg.util.messages.axisarray.replace()`` calls the utility function `
 
 If you have concerns over this reduced safety, if you set the environment variable ``EZMSG_DISABLE_FAST_REPLACE=1``, then this imported ``replace`` function will simply be the function ``dataclasses.replace`` defined in the python standard `dataclasses` module. 
 
-.. note:: Use of this purpose-made ``replace`` function is not limited to ``AxisArray`` objects. It can be used to create any dataclass object given an instance of said class, including user-defined dataclasses. An example of this can be seen in the tutorial :ref:`here <processing_data_tutorial>`.
+.. note:: Use of this purpose-made ``replace`` function is not limited to ``AxisArray`` objects. It can be used to create any dataclass object given an instance of said class, including user-defined dataclasses.
 
 |ezmsg_logo_small| See Also
 ********************************
 
-#. :doc:`../reference/API/axisarray`
-
-.. :doc:`../how-tos/axisarray/content-axisarray`
+#. `AxisArray API Reference <https://www.ezmsg.org/ezmsg/reference/API/axisarray.html>`_
 
 .. |ezmsg_logo_small| image:: ../_static/_images/ezmsg_logo.png
   :width: 40

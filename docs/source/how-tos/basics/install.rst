@@ -97,7 +97,7 @@ To install an extension, you can use pip:
 
    pip install ezmsg[extension_name]
 
-For more information on available extensions, please refer to the :doc:`Extensions page <../extensions/content-extensions>`.
+For more information on available extensions, please refer to the :doc:`Extensions page <../../extensions/content-extensions>`.
 
 
 .. |ezmsg_logo_small| image:: ../../_static/_images/ezmsg_logo.png

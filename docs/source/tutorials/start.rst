@@ -53,7 +53,7 @@ To install the ezmsg framework, you can use pip in your terminal:
 
    pip install ezmsg
 
-Once installed, you can start using ezmsg in your projects. You can skip straight to the section on :ref:`updating-ezmsg`.
+Once installed, you can start using ezmsg in your projects. You can skip straight to the section on :ref:`updating-ezmsg-tutorial`.
 
 From source (using git)
 ==========================
@@ -127,7 +127,7 @@ Running the tests ensures everything is working correctly.
 
   python -m pytest -v tests
 
-.. _updating-ezmsg:
+.. _updating-ezmsg-tutorial:
 
 |ezmsg_logo_small| How to update ezmsg
 ***************************************
