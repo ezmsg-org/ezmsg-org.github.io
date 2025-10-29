@@ -117,8 +117,7 @@ This documentation is part of the ezmsg project. See [LICENSE](LICENSE) for deta
 
 - **Issues**: Report documentation issues in this repository's [issue tracker](https://github.com/ezmsg-org/ezmsg-org.github.io/issues)
 - **Code issues**: Report to the respective package repository
-- **Community**: Join discussions in the [ezmsg organization](https://github.com/ezmsg-org)
 
 ## Acknowledgments
 
-The ezmsg project is supported by Johns Hopkins University (JHU), the JHU Applied Physics Laboratory (APL), and the Wyss Center for Bio and Neuro Engineering.
+The ezmsg project is supported by Johns Hopkins University (JHU), the JHU Applied Physics Laboratory (APL), the Wyss Center for Bio and Neuro Engineering, and Blackrock Neurotech.
