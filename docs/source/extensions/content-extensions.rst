@@ -20,11 +20,12 @@ Please note that the `ezmsg` package itself can still be installed without any a
 Extensions can be managed manually as well. Here are some of the extensions we manage or are aware of:
 
 - `ezmsg-sigproc <https://github.com/ezmsg-org/ezmsg-sigproc>`_ -- Timeseries signal processing modules
+- `ezmsg-learn <https://github.com/ezmsg-org/ezmsg-learn>`_ -- Machine learning modules for streaming signal processing
+- `ezmsg-lsl <https://github.com/ezmsg-org/ezmsg-lsl>`_ -- Source unit for LSL Inlet and sink unit for LSL Outlet
 - `ezmsg-websocket <https://github.com/ezmsg-org/ezmsg-websocket>`_ -- Websocket server and client nodes for `ezmsg` graphs
 - `ezmsg-zmq <https://github.com/ezmsg-org/ezmsg-zmq>`_ -- ZeroMQ pub and sub nodes for `ezmsg` graphs
 - `ezmsg-panel <https://github.com/griffinmilsap/ezmsg-panel>`_ -- Plotting tools for `ezmsg` that use `panel <https://github.com/holoviz/panel>`_
 - `ezmsg-blackrock <https://github.com/griffinmilsap/ezmsg-blackrock>`_ -- Interface for Blackrock Cerebus ecosystem (incl. Neuroport) using `pycbsdk`
-- `ezmsg-lsl <https://github.com/ezmsg-org/ezmsg-lsl>`_ -- Source unit for LSL Inlet and sink unit for LSL Outlet
 - `ezmsg-unicorn <https://github.com/griffinmilsap/ezmsg-unicorn>`_ -- g.tec Unicorn Hybrid Black integration for `ezmsg`
 - `ezmsg-gadget <https://github.com/griffinmilsap/ezmsg-gadget>`_ -- USB-gadget with HID control integration for Raspberry Pi (Zero/W/2W, 4, CM4)
 - `ezmsg-openbci <https://github.com/griffinmilsap/ezmsg-openbci>`_ -- OpenBCI Cyton serial interface for `ezmsg`
@@ -34,7 +35,14 @@ Extensions can be managed manually as well. Here are some of the extensions we m
 |ezmsg_logo_small| Extension API References
 ***********************************************
 
-TODO: Links to extensions' documentation pages will be added here.
+For detailed API documentation, visit the individual package documentation sites:
+
+* `ezmsg-sigproc API Documentation <https://www.ezmsg.org/ezmsg-sigproc/>`_ - Signal processing modules
+* `ezmsg-learn API Documentation <https://www.ezmsg.org/ezmsg-learn/>`_ - Machine learning modules
+* `ezmsg-lsl API Documentation <https://www.ezmsg.org/ezmsg-lsl/>`_ - Lab Streaming Layer integration
+
+.. note::
+   Additional extensions are being documented and their API references will be added here as they become available.
 
 .. |ezmsg_logo_small| image:: ../_static/_images/ezmsg_logo.png
   :width: 40
