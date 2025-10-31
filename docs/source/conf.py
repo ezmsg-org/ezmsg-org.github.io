@@ -42,7 +42,12 @@ intersphinx_mapping = {
     "ezmsg": ("https://www.ezmsg.org/ezmsg/", None),
     "ezmsg.sigproc": ("https://www.ezmsg.org/ezmsg-sigproc/", None),
     "ezmsg.learn": ("https://www.ezmsg.org/ezmsg-learn/", None),
+    "ezmsg.blackrock": ("https://www.ezmsg.org/ezmsg-blackrock/", None),
+    "ezmsg.event": ("https://www.ezmsg.org/ezmsg-event/", None),
     "ezmsg.lsl": ("https://www.ezmsg.org/ezmsg-lsl/", None),
+    "ezmsg.tools": ("https://www.ezmsg.org/ezmsg-tools/", None),
+    "ezmsg.xdf": ("https://www.ezmsg.org/ezmsg-xdf/", None),
+    "ezmsg.zmq": ("https://www.ezmsg.org/ezmsg-zmq/", None),
 }
 intersphinx_disabled_domains = ["std"]
 

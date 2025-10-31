@@ -37,9 +37,29 @@ Extensions can be managed manually as well. Here are some of the extensions we m
 
 For detailed API documentation, visit the individual package documentation sites:
 
-* `ezmsg-sigproc API Documentation <https://www.ezmsg.org/ezmsg-sigproc/>`_ - Signal processing modules
-* `ezmsg-learn API Documentation <https://www.ezmsg.org/ezmsg-learn/>`_ - Machine learning modules
-* `ezmsg-lsl API Documentation <https://www.ezmsg.org/ezmsg-lsl/>`_ - Lab Streaming Layer integration
+Core Extensions
+===============
+
+* `ezmsg-sigproc <https://www.ezmsg.org/ezmsg-sigproc/>`_ - Timeseries signal processing modules
+* `ezmsg-learn <https://www.ezmsg.org/ezmsg-learn/>`_ - Machine learning modules for streaming signal processing
+
+Data Acquisition & Streaming
+=============================
+
+* `ezmsg-blackrock <https://www.ezmsg.org/ezmsg-blackrock/>`_ - Interface for Blackrock Cerebus ecosystem (incl. Neuroport)
+* `ezmsg-lsl <https://www.ezmsg.org/ezmsg-lsl/>`_ - Lab Streaming Layer integration
+
+Data Formats & Events
+======================
+
+* `ezmsg-event <https://www.ezmsg.org/ezmsg-event/>`_ - Signal events like neural spikes and heartbeats
+* `ezmsg-xdf <https://www.ezmsg.org/ezmsg-xdf/>`_ - XDF (Extensible Data Format) file support
+
+Communication & Visualization
+==============================
+
+* `ezmsg-zmq <https://www.ezmsg.org/ezmsg-zmq/>`_ - ZeroMQ pub/sub units for distributed messaging
+* `ezmsg-tools <https://www.ezmsg.org/ezmsg-tools/>`_ - Tools to visualize running graphs and data
 
 .. note::
    Additional extensions are being documented and their API references will be added here as they become available.
