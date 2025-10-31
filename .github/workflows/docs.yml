@@ -45,6 +45,9 @@ jobs:
       - name: Add .nojekyll file
         run: touch docs/build/html/.nojekyll
 
+      - name: Add CNAME file for custom domain
+        run: echo "www.ezmsg.org" > docs/build/html/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
