@@ -1,68 +1,103 @@
-List of Extensions
-#######################
+Extensions
+##########
 
-`ezmsg` extensions can be installed individually or all at once. To install all the extension packages in one go, you can use the following command:
+ezmsg uses `Python namespace packages <https://packaging.python.org/en/latest/guides/packaging-namespace-packages/>`_ to provide a modular ecosystem of extensions. Namespace packages allow multiple independently distributed packages to share a common namespace (``ezmsg.*``), so you can install only what you need while keeping imports consistent.
 
-.. code-block:: bash
-
-    pip install "ezmsg[all_ext]"
-
-
-This will install all the available public extension packages for `ezmsg` that are listed in `pyproject.toml`.
-If you prefer to install a subset of extension packages, you can use the following command:
+For example, installing ``ezmsg-sigproc`` makes the ``ezmsg.sigproc`` module available:
 
 .. code-block:: bash
 
-    pip install "ezmsg[zmq,sigproc,...]"
+    pip install ezmsg-sigproc
 
-Please note that the `ezmsg` package itself can still be installed without any additional extensions using `pip install ezmsg`.
+.. code-block:: python
 
-Extensions can be managed manually as well. Here are some of the extensions we manage or are aware of:
+    from ezmsg.sigproc.butterworthfilter import ButterworthFilter
 
-- `ezmsg-sigproc <https://github.com/ezmsg-org/ezmsg-sigproc>`_ -- Timeseries signal processing modules
-- `ezmsg-learn <https://github.com/ezmsg-org/ezmsg-learn>`_ -- Machine learning modules for streaming signal processing
-- `ezmsg-lsl <https://github.com/ezmsg-org/ezmsg-lsl>`_ -- Source unit for LSL Inlet and sink unit for LSL Outlet
-- `ezmsg-websocket <https://github.com/ezmsg-org/ezmsg-websocket>`_ -- Websocket server and client nodes for `ezmsg` graphs
-- `ezmsg-zmq <https://github.com/ezmsg-org/ezmsg-zmq>`_ -- ZeroMQ pub and sub nodes for `ezmsg` graphs
-- `ezmsg-panel <https://github.com/griffinmilsap/ezmsg-panel>`_ -- Plotting tools for `ezmsg` that use `panel <https://github.com/holoviz/panel>`_
-- `ezmsg-blackrock <https://github.com/griffinmilsap/ezmsg-blackrock>`_ -- Interface for Blackrock Cerebus ecosystem (incl. Neuroport) using `pycbsdk`
-- `ezmsg-unicorn <https://github.com/griffinmilsap/ezmsg-unicorn>`_ -- g.tec Unicorn Hybrid Black integration for `ezmsg`
-- `ezmsg-gadget <https://github.com/griffinmilsap/ezmsg-gadget>`_ -- USB-gadget with HID control integration for Raspberry Pi (Zero/W/2W, 4, CM4)
-- `ezmsg-openbci <https://github.com/griffinmilsap/ezmsg-openbci>`_ -- OpenBCI Cyton serial interface for `ezmsg`
-- `ezmsg-ssvep <https://github.com/griffinmilsap/ezmsg-ssvep>`_ -- Tools for running SSVEP experiments with `ezmsg`
-- `ezmsg-vispy <https://github.com/pperanich/ezmsg-vispy>`_ -- `ezmsg` visualization toolkit using PyQt6 and vispy.
+Each extension is a separate package with its own dependencies, versioning, and release cycle. This keeps the core ``ezmsg`` package lightweight while allowing the ecosystem to grow.
 
-|ezmsg_logo_small| Extension API References
-***********************************************
+|ezmsg_logo_small| Official Extensions
+**************************************
 
-For detailed API documentation, visit the individual package documentation sites:
+These namespace packages are maintained by the ezmsg organization:
 
-Core Extensions
-===============
+.. list-table::
+   :header-rows: 1
+   :widths: 20 50 15 15
 
-* `ezmsg-sigproc <https://www.ezmsg.org/ezmsg-sigproc/>`_ - Timeseries signal processing modules
-* `ezmsg-learn <https://www.ezmsg.org/ezmsg-learn/>`_ - Machine learning modules for streaming signal processing
+   * - Package
+     - Description
+     - Docs
+     - Source
+   * - `ezmsg-baseproc <https://pypi.org/project/ezmsg-baseproc/>`_
+     - Base processor classes and protocols for building message-processing components
+     - `docs <https://www.ezmsg.org/ezmsg-baseproc/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-baseproc>`_
+   * - `ezmsg-blackrock <https://pypi.org/project/ezmsg-blackrock/>`_
+     - Interface for Blackrock Cerebus ecosystem (incl. Neuroport) using pycbsdk
+     - `docs <https://www.ezmsg.org/ezmsg-blackrock/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-blackrock>`_
+   * - `ezmsg-event <https://pypi.org/project/ezmsg-event/>`_
+     - Discrete signal events like neural spikes, heartbeats, and triggers
+     - `docs <https://www.ezmsg.org/ezmsg-event/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-event>`_
+   * - `ezmsg-learn <https://pypi.org/project/ezmsg-learn/>`_
+     - Machine learning modules for streaming signal processing
+     - `docs <https://www.ezmsg.org/ezmsg-learn/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-learn>`_
+   * - `ezmsg-lsl <https://pypi.org/project/ezmsg-lsl/>`_
+     - Lab Streaming Layer (LSL) inlet and outlet units
+     - `docs <https://www.ezmsg.org/ezmsg-lsl/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-lsl>`_
+   * - `ezmsg-neo <https://pypi.org/project/ezmsg-neo/>`_
+     - Load and stream data from Neo-supported file formats (Blackrock, BrainVision, etc.)
+     - `docs <https://www.ezmsg.org/ezmsg-neo/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-neo>`_
+   * - `ezmsg-panel <https://pypi.org/project/ezmsg-panel/>`_
+     - Real-time plotting and dashboards using Panel/HoloViz
+     - `docs <https://www.ezmsg.org/ezmsg-panel/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-panel>`_
+   * - `ezmsg-redis <https://pypi.org/project/ezmsg-redis/>`_
+     - Redis pub/sub units for distributed messaging
+     - `docs <https://www.ezmsg.org/ezmsg-redis/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-redis>`_
+   * - `ezmsg-sigproc <https://pypi.org/project/ezmsg-sigproc/>`_
+     - Timeseries signal processing: filtering, spectral analysis, resampling, and more
+     - `docs <https://www.ezmsg.org/ezmsg-sigproc/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-sigproc>`_
+   * - `ezmsg-simbiophys <https://pypi.org/project/ezmsg-simbiophys/>`_
+     - Simulated biophysical signals: oscillators, noise generators, synthetic EEG
+     - `docs <https://www.ezmsg.org/ezmsg-simbiophys/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-simbiophys>`_
+   * - `ezmsg-tools <https://pypi.org/project/ezmsg-tools/>`_
+     - Visualization and debugging tools for running ezmsg graphs
+     - `docs <https://www.ezmsg.org/ezmsg-tools/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-tools>`_
+   * - `ezmsg-websocket <https://pypi.org/project/ezmsg-websocket/>`_
+     - WebSocket server and client units for web integration
+     - `docs <https://www.ezmsg.org/ezmsg-websocket/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-websocket>`_
+   * - `ezmsg-xdf <https://pypi.org/project/ezmsg-xdf/>`_
+     - XDF (Extensible Data Format) file reading and writing
+     - `docs <https://www.ezmsg.org/ezmsg-xdf/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-xdf>`_
+   * - `ezmsg-zmq <https://pypi.org/project/ezmsg-zmq/>`_
+     - ZeroMQ pub/sub units for distributed messaging
+     - `docs <https://www.ezmsg.org/ezmsg-zmq/>`_
+     - `github <https://github.com/ezmsg-org/ezmsg-zmq>`_
 
-Data Acquisition & Streaming
-=============================
+|ezmsg_logo_small| Community Extensions
+***************************************
 
-* `ezmsg-blackrock <https://www.ezmsg.org/ezmsg-blackrock/>`_ - Interface for Blackrock Cerebus ecosystem (incl. Neuroport)
-* `ezmsg-lsl <https://www.ezmsg.org/ezmsg-lsl/>`_ - Lab Streaming Layer integration
+These extensions are maintained by community members:
 
-Data Formats & Events
-======================
-
-* `ezmsg-event <https://www.ezmsg.org/ezmsg-event/>`_ - Signal events like neural spikes and heartbeats
-* `ezmsg-xdf <https://www.ezmsg.org/ezmsg-xdf/>`_ - XDF (Extensible Data Format) file support
-
-Communication & Visualization
-==============================
-
-* `ezmsg-zmq <https://www.ezmsg.org/ezmsg-zmq/>`_ - ZeroMQ pub/sub units for distributed messaging
-* `ezmsg-tools <https://www.ezmsg.org/ezmsg-tools/>`_ - Tools to visualize running graphs and data
+- `ezmsg-unicorn <https://github.com/griffinmilsap/ezmsg-unicorn>`_ -- g.tec Unicorn Hybrid Black integration
+- `ezmsg-gadget <https://github.com/griffinmilsap/ezmsg-gadget>`_ -- USB-gadget with HID control for Raspberry Pi (Zero/W/2W, 4, CM4)
+- `ezmsg-openbci <https://github.com/griffinmilsap/ezmsg-openbci>`_ -- OpenBCI Cyton serial interface
+- `ezmsg-ssvep <https://github.com/griffinmilsap/ezmsg-ssvep>`_ -- Tools for running SSVEP experiments
+- `ezmsg-vispy <https://github.com/pperanich/ezmsg-vispy>`_ -- Visualization toolkit using PyQt6 and VisPy
 
 .. note::
-   Additional extensions are being documented and their API references will be added here as they become available.
+   Want to create your own extension? Use the `ezmsg-template <https://github.com/ezmsg-org/ezmsg-template>`_ repository as a starting point.
 
 .. |ezmsg_logo_small| image:: ../_static/_images/ezmsg_logo.png
   :width: 40

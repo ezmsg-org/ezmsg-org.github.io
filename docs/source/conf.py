@@ -40,12 +40,18 @@ intersphinx_mapping = {
     "sphinx": ("https://www.sphinx-doc.org/en/master/", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
     "ezmsg": ("https://www.ezmsg.org/ezmsg/", None),
-    "ezmsg.sigproc": ("https://www.ezmsg.org/ezmsg-sigproc/", None),
-    "ezmsg.learn": ("https://www.ezmsg.org/ezmsg-learn/", None),
+    "ezmsg.baseproc": ("https://www.ezmsg.org/ezmsg-baseproc/", None),
     "ezmsg.blackrock": ("https://www.ezmsg.org/ezmsg-blackrock/", None),
     "ezmsg.event": ("https://www.ezmsg.org/ezmsg-event/", None),
+    "ezmsg.learn": ("https://www.ezmsg.org/ezmsg-learn/", None),
     "ezmsg.lsl": ("https://www.ezmsg.org/ezmsg-lsl/", None),
+    "ezmsg.neo": ("https://www.ezmsg.org/ezmsg-neo/", None),
+    "ezmsg.panel": ("https://www.ezmsg.org/ezmsg-panel/", None),
+    "ezmsg.redis": ("https://www.ezmsg.org/ezmsg-redis/", None),
+    "ezmsg.sigproc": ("https://www.ezmsg.org/ezmsg-sigproc/", None),
+    "ezmsg.simbiophys": ("https://www.ezmsg.org/ezmsg-simbiophys/", None),
     "ezmsg.tools": ("https://www.ezmsg.org/ezmsg-tools/", None),
+    "ezmsg.websocket": ("https://www.ezmsg.org/ezmsg-websocket/", None),
     "ezmsg.xdf": ("https://www.ezmsg.org/ezmsg-xdf/", None),
     "ezmsg.zmq": ("https://www.ezmsg.org/ezmsg-zmq/", None),
 }
@@ -58,6 +64,24 @@ html_logo = "_static/_images/ezmsg_logo.png"
 html_favicon = "_static/_images/ezmsg_logo.png"
 
 html_static_path = ["_static"]
+
+html_theme_options = {
+    "header_links_before_dropdown": 5,
+    "navbar_start": ["navbar-logo"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],
+    "icon_links": [
+        {
+            "name": "GitHub",
+            "url": "https://github.com/ezmsg-org/ezmsg",
+            "icon": "fa-brands fa-github",
+        },
+        {
+            "name": "PyPI",
+            "url": "https://pypi.org/project/ezmsg/",
+            "icon": "fa-solid fa-box",
+        },
+    ],
+}
 
 # Redirects for pages that are unavailable or moved
 rediraffe_redirects = {

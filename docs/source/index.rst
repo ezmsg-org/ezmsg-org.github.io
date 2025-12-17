@@ -108,6 +108,36 @@ These are a few high-level topics to help you learn more about ezmsg and the ezm
 Why use ezmsg over a comparable tool? ezmsg is extremely fast and uses Python's ``multiprocessing.shared_memory`` module to facilitate efficient message passing without C++ or any compilation/build tooling. It is easy to install and contains less boilerplate than similar frameworks. It also provides a framework for building processing pipelines while keeping best practices in mind.
 
 
+|ezmsg_logo_small| Extensions
+***************************************
+
+ezmsg has a rich ecosystem of extensions for signal processing, machine learning, data acquisition, and more.
+
+.. grid:: 2
+   :gutter: 3
+
+   .. grid-item-card:: Signal Processing
+      :link: https://www.ezmsg.org/ezmsg-sigproc/
+
+      **ezmsg-sigproc** - Filtering, spectral analysis, resampling, and more for timeseries data.
+
+   .. grid-item-card:: Machine Learning
+      :link: https://www.ezmsg.org/ezmsg-learn/
+
+      **ezmsg-learn** - Online/streaming ML with dimensionality reduction, linear models, and neural networks.
+
+   .. grid-item-card:: Lab Streaming Layer
+      :link: https://www.ezmsg.org/ezmsg-lsl/
+
+      **ezmsg-lsl** - Connect to LSL streams for real-time data acquisition and synchronization.
+
+   .. grid-item-card:: Signal Events
+      :link: https://www.ezmsg.org/ezmsg-event/
+
+      **ezmsg-event** - Handle discrete events like neural spikes, heartbeats, and triggers.
+
+See :doc:`Extensions <extensions/content-extensions>` for the complete list including hardware integrations (Blackrock, OpenBCI, g.tec), visualization tools, and communication protocols.
+
 |ezmsg_logo_small| Table of Contents
 ***************************************
 
@@ -118,11 +148,11 @@ Below is a breakdown of all the documentation available on this site.
    :titlesonly:
 
    Tutorial <tutorials/content-tutorials>
-   What is ezmsg? <explanations/content-explanations>
    How To <how-tos/content-howtos>
-   Reference <reference/content-reference>
-   Developer <developer/content-developer>
    Extensions <extensions/content-extensions>
+   Reference <reference/content-reference>
+   What is ezmsg? <explanations/content-explanations>
+   Developer <developer/content-developer>
    Release Notes <release>
 
 
@@ -132,7 +162,7 @@ Below is a breakdown of all the documentation available on this site.
 Financial Support
 ==========================
 
-`ezmsg` is supported by Johns Hopkins University (JHU), the JHU Applied Physics Laboratory (APL), and by the Wyss Center for Bio and Neuro Engineering.
+`ezmsg` is supported by Johns Hopkins University (JHU), the JHU Applied Physics Laboratory (APL), the Wyss Center for Bio and Neuro Engineering, and Blackrock Neurotech.
 
 In Media 
 =========
