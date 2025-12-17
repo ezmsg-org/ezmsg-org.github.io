@@ -8,6 +8,8 @@ Welcome to the ezmsg documentation!
 
 ezmsg is a **highly performant messaging and multiprocessing framework** designed for building modular, high-performance signal processing pipelines. It is built in pure Python with no dependencies, making it easy to install and use.
 
+ezmsg has a rich ecosystem of extensions for signal processing, machine learning, data acquisition, and more. Check out the :doc:`Extensions <extensions/content-extensions>` section for a complete list.
+
 |ezmsg_logo_small| What is ezmsg?
 **********************************
 
@@ -17,7 +19,7 @@ ezmsg is a **highly performant messaging and multiprocessing framework** designe
 
 .. todo:: Add diagram of architecture
 
-ezmsg implements much of the LabGraph API (with a few notable differences), and owes a lot of its design to the LabGraph developers/project. Afterall, imitation is the sincerest form of flattery.
+ezmsg implements much of the LabGraph API (with a few notable differences), and owes a lot of its design to the LabGraph developers/project. After all, imitation is the sincerest form of flattery.
 
 The ezmsg library eases the creation of modular systems whose elements can be switched out easily. Consider the use case of building a processing pipeline where you will be experimenting with adding and removing steps until you find an optimal workflow. ezmsg allows you to easily separate each step into a discrete entity and piece together a workflow from those entities. Check out the helpful :doc:`tutorial series <tutorials/content-tutorials>` to see how this works.
 
@@ -43,16 +45,7 @@ Then in your Python script or Jupyter notebook, you can import ezmsg like so:
 
 If you would like to develop with ezmsg or contribute to the project, you can follow the steps outlined in the :doc:`Developer Guide <developer/content-developer>`.
 
-If you would like to build the documentation locally, please refer to the instructions found in :ref:`documentation_building`. 
-
-A substantial list of extensions exist for ezmsg. One can install extensions as follows:
-
-.. code-block:: bash
-
-    pip install ezmsg[extension_name]
-
-
-See :doc:`Extensions <extensions/content-extensions>` for more information.
+If you would like to build the documentation locally, please refer to the instructions found in :ref:`documentation_building`.
 
 |ezmsg_logo_small| Documentation Overview
 *******************************************
