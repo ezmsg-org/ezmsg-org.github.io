@@ -177,9 +177,11 @@ There are a few important notes to remember when implementing these Unit methods
 - Each method must be asynchronous to allow for non-blocking message processing. This means that each method must be defined with the ``async def`` keywords, not ``def``. 
 - Each method should be decorated with the appropriate decorators (see :ref:`decorators`). The most important decorators are ``@ez.subscriber`` and ``@ez.publisher``, which are used to subscribe to input streams and publish to output streams, respectively. These two decorators should take the relevant streams as arguments.
 - Each publishing method must use ``yield`` to produce output messages. The syntax of the yield statement should be ``yield self.OUTPUT_STREAM, MessageType(...)``, where ``self.OUTPUT_STREAM`` is the output stream you are publishing to, and ``MessageType(...)`` is the message you are sending. 
-- Each subscribing method must take in a message parameter which will receive the incoming message from the input stream. The method signature should be ``async def method_name(self, message)``. Additionally, in the ``ez.subscriber`` decorator, you can specify the keyword boolean argument ``zero_copy`` to indicate whether you want to receive a zero-copy reference (``zero_copy=True``) to the message (if supported by the message type) or a copy of the message. The default is ``zero_copy=False``.
+- Each subscribing method must take in a message parameter which will receive the incoming message from the input stream. The method signature should be ``async def method_name(self, message)``. 
 - If a method is to stop processing and terminate normally, it should raise the ``ez.NormalTermination`` exception. This indicates to ezmsg that the Unit has completed its task and can be safely terminated.
 - There are other decorators available for other purposes. See :ref:`decorators` for more details. Note, one can stack decorators. 
+
+.. important:: For performance reasons, ezmsg delivers subscriber messages with zero-copy semantics in all cases. **Treat the incoming message as immutable; if you need to modify or republish it, copy first.** You may come across code with a ``zero-copy = True`` keyword argument specified in the ``@ez.subscriber`` decorator, which is now ignored. See :doc:`../../explanations/transport-messaging-internals` for details.
 
 With these components discussed, we can see the example from this question again:
 
