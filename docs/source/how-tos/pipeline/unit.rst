@@ -181,7 +181,7 @@ There are a few important notes to remember when implementing these Unit methods
 - If a method is to stop processing and terminate normally, it should raise the ``ez.NormalTermination`` exception. This indicates to ezmsg that the Unit has completed its task and can be safely terminated.
 - There are other decorators available for other purposes. See :ref:`decorators` for more details. Note, one can stack decorators. 
 
-.. important:: For performance reasons, ezmsg delivers subscriber messages with zero-copy semantics in all cases. **Treat the incoming message as immutable; if you need to modify or republish it, copy first.** You may come across code with a ``zero-copy = True`` keyword argument specified in the ``@ez.subscriber`` decorator, which is now ignored. See :doc:`../../explanations/transport-messaging-internals` for details.
+.. important:: For performance reasons, ezmsg delivers subscriber messages with zero-copy semantics in all cases. **Treat the incoming message as immutable; if you need to modify or republish it, copy first.** You may come across code with a ``zero_copy=True`` keyword argument specified in the ``@ez.subscriber`` decorator, which is now ignored. See :doc:`../../explanations/transport-messaging-internals` for details.
 
 With these components discussed, we can see the example from this question again:
 
