@@ -3,7 +3,7 @@ Low-level API
 
 `ezmsg` exposes two layers of API that build on the same pub/sub core:
 
-a **low-level API** that lets you create publishers and subscribers directly, and a **high-level API** that lets you describe a processing graph (a dataflow pipeline) and have ezmsg manage execution for you.
+A **low-level API** that lets you create publishers and subscribers directly, and a **high-level API** that lets you describe a processing graph (a dataflow pipeline) and have ezmsg manage execution for you.
 
 This page explains the low-level model and how it differs from the high-level API so you can choose the right tool for the job.
 
