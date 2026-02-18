@@ -9,6 +9,7 @@ This section of the documentation aims to provide a comprehensive overview of th
     :maxdepth: 1
 
     ezmsg-design
+    low-level-api
     axisarray
 
 Other ways to learn about `ezmsg` include following our :doc:`Tutorial <../tutorials/content-tutorials>`, checking the list of :doc:`HOW TO pages <../how-tos/content-howtos>` and the :doc:`reference documentation <../reference/content-reference>`. 
