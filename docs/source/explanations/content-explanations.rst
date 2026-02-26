@@ -10,7 +10,10 @@ This section of the documentation aims to provide a comprehensive overview of th
 
     ezmsg-design
     low-level-api
+    transport-messaging-internals
     axisarray
+
+.. important:: `ezmsg` delivers subscriber messages with zero-copy semantics in all cases. Treat incoming messages as immutable, and copy data before mutating or republishing. See :doc:`transport-messaging-internals` for details and examples.
 
 Other ways to learn about `ezmsg` include following our :doc:`Tutorial <../tutorials/content-tutorials>`, checking the list of :doc:`HOW TO pages <../how-tos/content-howtos>` and the :doc:`reference documentation <../reference/content-reference>`. 
 
