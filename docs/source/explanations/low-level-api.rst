@@ -47,7 +47,7 @@ The **high-level API** is a good fit when:
 - You benefit from the pipeline tooling (graph visualization, CLI integration, etc.).
 - You want a structured way to scale across threads/processes without managing it yourself.
 
-.. important:: The low-level API is not any more performant than the high-level API.  There is no meaningful performance hit when using the high-level API.
+.. important:: The low-level API is not more performant than the high-level API. There is no meaningful performance hit when using the high-level API.
 
 
 |ezmsg_logo_small| Examples
