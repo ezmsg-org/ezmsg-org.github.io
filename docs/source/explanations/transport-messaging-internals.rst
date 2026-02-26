@@ -17,7 +17,7 @@ Connection Lifecycle (Publisher -> GraphServer -> Subscriber -> Channel)
 1. A **Publisher** connects to the **GraphServer**, allocates shared-memory buffers, and registers its topic. It starts a small TCP server so Channels can connect back to it, then reports that server's address to the GraphServer.
 2. A **Subscriber** connects to the **GraphServer** and registers its topic. The GraphServer computes upstream publishers from the topic DAG and sends the Subscriber an `UPDATE` list of publisher IDs.
 3. For each publisher ID, the Subscriber asks the local **ChannelManager** to register a **Channel**. If a Channel does not yet exist in this process, it is created by:
-4. The **Channel** requesting a channel allocation from the GraphServer for the given publisher ID. The GraphServer returns a new channel ID plus the publisher's server address.
+4. The **Channel** requests a channel allocation from the GraphServer for the given publisher ID. The GraphServer returns a new channel ID plus the publisher's server address.
 5. The **Channel** connects to the Publisher's channel server, receives the topic and shared-memory name, and attempts to attach to shared memory. It reports whether SHM attach succeeded plus its process ID.
 6. The **Publisher** completes the handshake by returning the configured number of buffers. The Channel is now ready to receive messages and notify local subscribers.
 7. When graph topology changes (connect/disconnect or new publishers), the GraphServer sends new `UPDATE` messages and Subscribers add or remove Channels as needed.
