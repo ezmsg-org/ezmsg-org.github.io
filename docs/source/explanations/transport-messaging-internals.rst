@@ -63,7 +63,7 @@ Backpressure works the same way for local, SHM, and TCP delivery. The transport 
 Zero-copy Semantics and Message Ownership
 =========================================
 
-Publishers in `ezmsg` serialize messages to shared memory, and eventually to a module-scoped **MessageCache** which is shared by several Subscribers. Subscribers receive a "zero-copy" view of this message that is:
+Publishers in `ezmsg` serialize messages to shared memory, and eventually into the process-local `MessageCache` owned by each Channel. That Channel-level cache is shared by all Subscribers attached to that Channel in the same process. Subscribers receive a "zero-copy" view of this message that is:
 
 - The originally published object itself in the case local transport was used.
 - Backed by Publisher-controlled shared memory if SHM transport was used.
