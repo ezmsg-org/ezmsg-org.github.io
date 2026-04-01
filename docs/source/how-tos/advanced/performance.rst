@@ -29,6 +29,12 @@ You can disable local delivery process-wide to make same-process publishers char
 
     EZMSG_ALLOW_LOCAL=0 uv run ezmsg-perf hotpath
 
+Or force TCP process-wide:
+
+.. code-block:: bash
+
+    EZMSG_FORCE_TCP=1 uv run ezmsg-perf hotpath
+
 You can also compare branches or refs using the interleaved A/B runner:
 
 .. code-block:: bash

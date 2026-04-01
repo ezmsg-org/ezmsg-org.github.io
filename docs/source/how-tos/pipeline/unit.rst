@@ -162,7 +162,7 @@ The ``InputMessageType`` and ``OutputMessageType`` can be any Python type:
            count: int
 - For signal processing applications, and data analysis applications, we recommend using our in-built labelled array messaging class ``AxisArray``. For more details, see :doc:`../../explanations/axisarray`.
 
-``OutputStream`` also exposes transport-related controls. ``force_tcp=True`` forces TCP when local delivery is not used. ``allow_local`` controls whether same-process subscribers may use the local fast path: ``None`` inherits the process-wide default from ``EZMSG_ALLOW_LOCAL``, ``True`` allows local delivery, and ``False`` disables it for that specific stream.
+``OutputStream`` also exposes transport-related controls. ``force_tcp`` controls whether TCP is required: ``None`` inherits the process-wide default from ``EZMSG_FORCE_TCP``, ``True`` forces TCP, and ``False`` leaves SHM available. ``allow_local`` controls whether same-process subscribers may use the local fast path: ``None`` inherits the process-wide default from ``EZMSG_ALLOW_LOCAL``, ``True`` allows local delivery, and ``False`` disables it for that specific stream. If ``force_tcp=True``, local delivery is disabled for that stream.
 
 We can use data coming in through an input stream by subscribing to it in one of our Unit methods (see :ref:`unit_methods` for more on this). Similarly, we can send data out through an output stream by publishing to it in one of our Unit methods. Finally, we need to connect the input and output streams to other Units in the pipeline (see :doc:`pipeline` for more on this).
 
@@ -211,7 +211,7 @@ When a Unit is initialised within a pipeline, ezmsg takes care of setting up the
 
 - Initialising the settings and state attributes based on the provided classes by running the ``initialize()`` method.
 - Setting up the input and output streams to facilitate message passing between Units. Each publishing stream comes with message channels for each process containing subscribers connected to it. This manages transport via local cache, sharedmemory or TCP depending on location of the relevant subscriber.
-- The process-wide default for same-process local delivery is controlled by ``EZMSG_ALLOW_LOCAL``. If unset, local delivery is enabled. This default can be overridden per publishing stream with ``allow_local=True`` or ``allow_local=False``.
+- The process-wide default for same-process local delivery is controlled by ``EZMSG_ALLOW_LOCAL``. If unset, local delivery is enabled. The process-wide default for forcing TCP is controlled by ``EZMSG_FORCE_TCP`` and defaults to disabled. These defaults can be overridden per publishing stream with ``allow_local=True`` / ``False`` and ``force_tcp=True`` / ``False``.
 - Registering the Unit methods with the appropriate decorators to handle message processing. The ``@ez.subscriber`` and ``@ez.publisher`` decorators, are registered for message transport. Other decorators like ``@ez.main``, or ``@ez.task`` define which process the method runs in (the Unit's main process, or a separate task process, respectively).
 
 
