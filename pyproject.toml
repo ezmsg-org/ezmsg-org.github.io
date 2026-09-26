@@ -3,7 +3,9 @@ name = "ezmsg-docs"
 version = "1.0.0"
 description = "Documentation for the ezmsg ecosystem"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "ezmsg>=3.10.0b4",
+]
 
 [dependency-groups]
 dev = [
