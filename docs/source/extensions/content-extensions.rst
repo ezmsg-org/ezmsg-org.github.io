@@ -38,7 +38,7 @@ These namespace packages are maintained by the ezmsg organization:
      - `github <https://github.com/ezmsg-org/ezmsg-blackrock>`__
    * - `ezmsg-dashboard <https://pypi.org/project/ezmsg-dashboard/>`_
      - Web dashboard for inspecting and operating running ezmsg systems
-     - `readme <https://github.com/ezmsg-org/ezmsg-dashboard#readme>`__
+     - `docs <https://www.ezmsg.org/ezmsg-dashboard/>`__
      - `github <https://github.com/ezmsg-org/ezmsg-dashboard>`__
    * - `ezmsg-event <https://pypi.org/project/ezmsg-event/>`_
      - Discrete signal events like neural spikes, heartbeats, and triggers
@@ -70,7 +70,7 @@ These namespace packages are maintained by the ezmsg organization:
      - `github <https://github.com/ezmsg-org/ezmsg-panel>`__
    * - `ezmsg-qt <https://pypi.org/project/ezmsg-qt/>`_
      - Qt integration: publish/subscribe to ezmsg topics from Qt widgets
-     - `readme <https://github.com/ezmsg-org/ezmsg-qt#readme>`__
+     - `docs <https://www.ezmsg.org/ezmsg-qt/>`__
      - `github <https://github.com/ezmsg-org/ezmsg-qt>`__
    * - `ezmsg-redis <https://pypi.org/project/ezmsg-redis/>`_
      - Redis pub/sub units for distributed messaging
