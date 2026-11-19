@@ -7,9 +7,9 @@ About AxisArray
 
 .. code-block:: python
 
-    from ezmsg.core.util import AxisArray
+    from ezmsg.util.messages.axisarray import AxisArray
 
-.. warning:: Importing ``AxisArray`` from ``ezmsg.core.util`` will import the `numpy` library. For this reason, we have implemented ezmsg in such a way that if you do not import ``AxisArray``, `numpy` will not be imported either. This is ideal for users wanting very lightweight applications and have no need for the functionality of `numpy`. 
+.. warning:: Importing ``AxisArray`` from ``ezmsg.util.messages.axisarray`` will import the `numpy` library. For this reason, we have implemented ezmsg in such a way that if you do not import ``AxisArray``, `numpy` will not be imported either. This is ideal for users wanting very lightweight applications and have no need for the functionality of `numpy`. 
 
 |ezmsg_logo_small| Why use AxisArray?
 ****************************************
