@@ -87,7 +87,7 @@ GraphServer
 When an `ezmsg` pipeline is started, `ezmsg` initializes a GraphServer, which does two main things:
 
 - spins up a process that keeps track of the graph state during execution. One GraphServer should be initialized per ezmsg pipeline. 
-- spins up a process that initialises a Shared Memory Server using Python's `multiprocessing.shared_memory` module and allocates blocks of memory to nodes of the pipeline graph. This is used for efficient inter-process message communication. 
+- manages shared memory, using Python's `multiprocessing.shared_memory` module and allocates blocks of memory to nodes of the pipeline graph. This is used for efficient inter-process message communication. 
 
 
 Pub/Sub Design
@@ -97,7 +97,7 @@ When a pipeline is initialised `ezmsg` constructs a directed acyclic graph (DAG)
 
 `Publisher` and `Subscriber` instances are created with a publisher/subscriber design architecture in mind. Each `Publisher` has a list of `Subscriber`\ s it can simultaneously publish to. Similarly, each `Subscriber` has a list of `Publisher`\ s it is listening to. This kind of architecture allows pipelines that are not simply a linear chain of nodes. 
 
-Messaging between `Publisher`\ s and `Subscriber`\ s is facilitated by the `ezmsg GraphServer` through the use of an appropriate messaging protocol identified at initialisation. `Publisher`\ s and `Subscriber`\ s in the same process use local memory cache. Inter-process communication is managed by the shared memory process and otherwise communication is done via TCP. 
+Messaging between `Publisher`\ s and `Subscriber`\ s is facilitated by the `ezmsg GraphServer` through the use of an appropriate messaging protocol identified at initialisation. `Publisher`\ s and `Subscriber`\ s in the same process use local memory cache. Inter-process communication on the same host goes through shared memory segments owned by the GraphServer and otherwise communication is done via TCP. 
 
 
 
@@ -194,26 +194,26 @@ These are the available decorators and their function:
      - This decorator is used to indicate that a method should be invoked when data is received on a specific input stream. The decorated method should take in the message as an argument.
      - .. code-block:: python
    
-            @ez.subscriber('INPUT')
+            @ez.subscriber(INPUT)
             def process(self, msg: MessageInType) -> None:
                # processing logic here
    * - ``@ez.publisher``
      - This decorator is used to indicate that a method should publish messages to a specific output stream. The decorated method should produce the message to be sent.
      - .. code-block:: python
 
-            @ez.publisher('OUTPUT')
+            @ez.publisher(OUTPUT)
             def generate(self) -> MessageOutType:
                # message generation logic here
                return message
    * - ``@ez.main``
-     - This decorator is used to indicate that a method should run in the main process of the `Unit`. This is useful for methods that need to perform tasks that are not directly related to message processing, such as initialization or cleanup.
+     - This decorator is used to indicate that a method should run as the main function of the `Unit` (one per Unit), independently of message processing. This is useful for initialization, background processing or cleanup.
      - .. code-block:: python
 
          @ez.main
          def initialize(self) -> None:
             # initialization logic here
    * - ``@ez.task``
-     - This decorator is used to indicate that a method should run in a separate task process. This is useful for methods that perform long-running or blocking operations, allowing the `Unit` to continue processing other messages.
+     - This decorator is used to indicate that a method should run as a coroutine in the same task/messaging thread that runs the Unit's subscribers and publishers. It does not create a new process; use ``@ez.process`` for that.
      - .. code-block:: python
 
             @ez.task

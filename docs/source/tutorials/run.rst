@@ -5,7 +5,7 @@ In the previous :doc:`tutorial <pipeline>`, we finished by running a simple ezms
 
 What actually happens when you run a script with an ezmsg pipeline and a ``run()`` function is that ezmsg starts a backend server called a **`GraphServer`**. This `GraphServer` manages the operation of any ezmsg pipeline connected to it. The naming comes from the fact that ezmsg pipelines are simply nodes - Units or Collections - connected in a :term:`directed acyclic graph` (:term:`DAG`\ ). 
 
-The `GraphServer` is coupled with a **`SharedMemoryServer`** that allows for efficient data transfer between the different components of the pipeline. This is particularly useful for high-throughput applications where low latency is crucial. It utilises the in-built Python ``multiprocessing.shared_memory`` library to handle the data transfer between processes.
+The `GraphServer` also owns the shared-memory segments that allow for efficient data transfer between processes on the same host. This is particularly useful for high-throughput applications where low latency is crucial. It utilises the in-built Python ``multiprocessing.shared_memory`` library to handle the data transfer between processes.
 
 The reverse is true too: you can run ezmsg instance (start a `GraphServer`) without a pipeline, but until you attach an ezmsg pipeline nothing interesting will happen.
 

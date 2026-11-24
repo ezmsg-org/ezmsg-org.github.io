@@ -211,7 +211,7 @@ When a Unit is initialised within a pipeline, ezmsg takes care of setting up the
 
 - Initialising the settings and state attributes based on the provided classes by running the ``initialize()`` method.
 - Setting up the input and output streams to facilitate message passing between Units. Each publishing stream comes with message channels for each process containing subscribers connected to it. This manages transport via local cache, sharedmemory or TCP depending on location of the relevant subscriber.
-- Registering the Unit methods with the appropriate decorators to handle message processing. The ``@ez.subscriber`` and ``@ez.publisher`` decorators, are registered for message transport. Other decorators like ``@ez.main``, or ``@ez.task`` define which process the method runs in (the Unit's main process, or a separate task process, respectively).
+- Registering the Unit methods with the appropriate decorators to handle message processing. The ``@ez.subscriber`` and ``@ez.publisher`` decorators, are registered for message transport. Other decorators define where the method runs: ``@ez.task`` runs it as a coroutine in the Unit's task/messaging thread, ``@ez.main`` runs it as the Unit's main function, and ``@ez.process`` runs it in its own process.
 
 
 
