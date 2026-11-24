@@ -6,7 +6,7 @@ ezmsg
 
 Welcome to the ezmsg documentation! 
 
-ezmsg is a **highly performant messaging and multiprocessing framework** designed for building modular, high-performance signal processing pipelines. It is built in pure Python with no dependencies, making it easy to install and use.
+ezmsg is a **highly performant messaging and multiprocessing framework** designed for building modular, high-performance signal processing pipelines. It is built in pure Python with minimal dependencies, making it easy to install and use.
 
 ezmsg has a rich ecosystem of extensions for signal processing, machine learning, data acquisition, and more. Check out the :doc:`Extensions <extensions/content-extensions>` section for a complete list.
 
@@ -15,7 +15,7 @@ ezmsg has a rich ecosystem of extensions for signal processing, machine learning
 
  ``ezmsg`` (n) - "easy message"
 
- ezmsg is a high-performance execution engine and multiprocessing backend for executing a directed acyclic graph of stream-processing units via a publish-subscribe pattern facilitated by shared memory transfer with zero-copy messaging between composable nodes written in pure Python with no dependencies or stated application space. 
+ ezmsg is a high-performance execution engine and multiprocessing backend for executing a directed acyclic graph of stream-processing units via a publish-subscribe pattern facilitated by shared memory transfer with zero-copy messaging between composable nodes written in pure Python with minimal dependencies and no stated application space. 
 
 .. todo:: Add diagram of architecture
 

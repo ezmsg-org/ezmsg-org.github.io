@@ -177,9 +177,11 @@ There are a few important notes to remember when implementing these Unit methods
 - Each method must be asynchronous to allow for non-blocking message processing. This means that each method must be defined with the ``async def`` keywords, not ``def``. 
 - Each method should be decorated with the appropriate decorators (see :ref:`decorators`). The most important decorators are ``@ez.subscriber`` and ``@ez.publisher``, which are used to subscribe to input streams and publish to output streams, respectively. These two decorators should take the relevant streams as arguments.
 - Each publishing method must use ``yield`` to produce output messages. The syntax of the yield statement should be ``yield self.OUTPUT_STREAM, MessageType(...)``, where ``self.OUTPUT_STREAM`` is the output stream you are publishing to, and ``MessageType(...)`` is the message you are sending. 
-- Each subscribing method must take in a message parameter which will receive the incoming message from the input stream. The method signature should be ``async def method_name(self, message)``. Additionally, in the ``ez.subscriber`` decorator, you can specify the keyword boolean argument ``zero_copy`` to indicate whether you want to receive a zero-copy reference (``zero_copy=True``) to the message (if supported by the message type) or a copy of the message. The default is ``zero_copy=False``.
+- Each subscribing method must take in a message parameter which will receive the incoming message from the input stream. The method signature should be ``async def method_name(self, message)``. 
 - If a method is to stop processing and terminate normally, it should raise the ``ez.NormalTermination`` exception. This indicates to ezmsg that the Unit has completed its task and can be safely terminated.
 - There are other decorators available for other purposes. See :ref:`decorators` for more details. Note, one can stack decorators. 
+
+.. important:: For performance reasons, ezmsg delivers subscriber messages with zero-copy semantics, unless the input stream is declared with ``leaky=True`` (a leaky stream receives a copy). **Treat the incoming message as immutable; if you need to modify or republish it, copy first.** You may come across code with a ``zero_copy=True`` keyword argument specified in the ``@ez.subscriber`` decorator, which is deprecated and ignored. See :doc:`../../explanations/transport-messaging-internals` for details.
 
 With these components discussed, we can see the example from this question again:
 
@@ -209,7 +211,7 @@ When a Unit is initialised within a pipeline, ezmsg takes care of setting up the
 
 - Initialising the settings and state attributes based on the provided classes by running the ``initialize()`` method.
 - Setting up the input and output streams to facilitate message passing between Units. Each publishing stream comes with message channels for each process containing subscribers connected to it. This manages transport via local cache, sharedmemory or TCP depending on location of the relevant subscriber.
-- Registering the Unit methods with the appropriate decorators to handle message processing. The ``@ez.subscriber`` and ``@ez.publisher`` decorators, are registered for message transport. Other decorators like ``@ez.main``, or ``@ez.task`` define which process the method runs in (the Unit's main process, or a separate task process, respectively).
+- Registering the Unit methods with the appropriate decorators to handle message processing. The ``@ez.subscriber`` and ``@ez.publisher`` decorators, are registered for message transport. Other decorators define where the method runs: ``@ez.task`` runs it as a coroutine in the Unit's task/messaging thread, ``@ez.main`` runs it as the Unit's main function, and ``@ez.process`` runs it in its own process.
 
 
 

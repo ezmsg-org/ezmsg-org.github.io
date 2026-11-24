@@ -9,7 +9,11 @@ This section of the documentation aims to provide a comprehensive overview of th
     :maxdepth: 1
 
     ezmsg-design
+    low-level-api
+    transport-messaging-internals
     axisarray
+
+.. important:: `ezmsg` delivers messages to subscribers with zero-copy semantics, except on input streams declared ``leaky``, which receive a private copy. Treat incoming messages as immutable, and copy data before mutating or republishing. See :doc:`transport-messaging-internals` for details and examples.
 
 Other ways to learn about `ezmsg` include following our :doc:`Tutorial <../tutorials/content-tutorials>`, checking the list of :doc:`HOW TO pages <../how-tos/content-howtos>` and the :doc:`reference documentation <../reference/content-reference>`. 
 
