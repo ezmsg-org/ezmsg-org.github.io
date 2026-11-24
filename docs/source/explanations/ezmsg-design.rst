@@ -156,6 +156,8 @@ Each publisher owns a fixed ring of message buffers (32 by default), whatever th
 
 Ordinary (non-leaky) subscribers receive messages **zero-copy**: the object passed to the subscriber method is the publisher's object, or a view of the shared-memory buffer, or the one deserialised copy shared within the process. Subscribers must therefore treat incoming messages as read-only, and copy any data they intend to modify or republish.
 
+The connection handshake, the per-process message cache and the failure modes of mutating a shared message are described in :doc:`transport-messaging-internals`.
+
 .. dd:ezmsg-transport:end
 
 
