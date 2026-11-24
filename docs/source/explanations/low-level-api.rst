@@ -16,10 +16,11 @@ At its core, `ezmsg` is a publish/subscribe messaging system.
 - A **publisher** can send messages to **many subscribers**.
 - A **subscriber** can listen to **many publishers**.
 - **Channels** route messages between publishers and subscribers; they are **created and managed automatically** when you connect endpoints.
-- Messages can be any Python object. `AxisArray` is optional, not required.
+- Messages can be any Python object. `AxisArray` is optional, not required (but strongly encouraged when it is a good fit).
 
 The low-level API gives you direct access to these primitives. You decide **when** to publish, **how** to receive, and **how** to schedule your own control flow. This makes the low-level API a good fit when you want to integrate messaging into an existing application structure instead of adopting the full `ezmsg` pipeline runtime.
 
+For a detailed breakdown of runtime components, transport selection, backpressure, and zero-copy semantics, see :doc:`transport-messaging-internals`.
 
 |ezmsg_logo_small| Relationship to the High-level API
 ******************************************************
@@ -45,6 +46,8 @@ The **high-level API** is a good fit when:
 - You want consistent dataflow semantics and standardized stream connections.
 - You benefit from the pipeline tooling (graph visualization, CLI integration, etc.).
 - You want a structured way to scale across threads/processes without managing it yourself.
+
+.. important:: The low-level API is not more performant than the high-level API. There is no meaningful performance hit when using the high-level API.
 
 
 |ezmsg_logo_small| Examples
