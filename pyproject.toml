@@ -18,4 +18,5 @@ docs = [
   "myst_parser",
   "sphinx_copybutton",
   "sphinx_design",
+  "sphinxcontrib-mermaid>=2.1.1",
 ]

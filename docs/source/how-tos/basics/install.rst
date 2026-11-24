@@ -7,9 +7,13 @@ You can install ezmsg in two main ways: using :term:`pip` to install from the Py
 |ezmsg_logo_small| System Requirements
 ***************************************
 
-ezmsg is written in and for **Python**, so it requires a Python interpreter to run. Currently, ezmsg requires at minimum Python 3.10. Beyond that, ezmsg is a pure Python library with no external dependencies.
+.. dd:ezmsg-platforms:start
 
-This also means that ezmsg is cross-platform and should run on any operating system that supports Python, including Windows, macOS, and Linux.
+`ezmsg` is a pure-Python package: it has no compiled code, and its only runtime dependencies are two small pure-Python libraries (``array-api-compat`` and ``typing-extensions``). NumPy is needed only for the ``AxisArray`` message type and is installed with ``pip install "ezmsg[axisarray]"``. It requires Python 3.10 or later.
+
+Each change to `ezmsg` is tested on Python 3.10, 3.11, 3.12, 3.13 and 3.14, on Linux (Ubuntu, x86-64), Windows (x86-64) and macOS (Apple silicon). It relies only on the Python standard library for processes, sockets and shared memory, so it is expected to run on other platforms with a supported Python, including ARM Linux single-board computers such as the Raspberry Pi; these are not part of the automated tests. Extension packages carry their own dependencies (for example SciPy for ``ezmsg-sigproc``, or a vendor SDK for a device interface), and those can narrow the set of supported platforms; ``ezmsg-dashboard``, for instance, requires Python 3.11 or later.
+
+.. dd:ezmsg-platforms:end
 
 In Windows and macOS, Python can be downloaded from the official website: `python.org <https://www.python.org/downloads/>`_. For newer users, we recommend using the `Anaconda <https://www.anaconda.com/download>`_ distribution of Python, which comes with a package manager and many useful libraries pre-installed.
 
@@ -28,7 +32,7 @@ On Linux, Python is usually pre-installed, but you can also install it using you
 
 where ``3.<version>`` is the version of Python you want to install (e.g. 3.12). 
 
-Whichever you choose, ensure that you have Python 3.8 or later installed on your system. You can verify your Python version by running in your terminal:
+Whichever you choose, ensure that you have Python 3.10 or later installed on your system. You can verify your Python version by running in your terminal:
 
 .. code-block:: bash
 

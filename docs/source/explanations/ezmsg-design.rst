@@ -1,6 +1,46 @@
 About `ezmsg` Architecture
 #############################
 
+.. dd:ezmsg-graph:start
+
+|ezmsg_logo_small| Overview
+*****************************
+
+`ezmsg` is a Python framework that runs a stream-processing system as a graph of asynchronous components connected by typed publish/subscribe streams.
+
+The building block is the **Unit**: a class that declares its input and output streams, optional settings (configuration, chosen at construction and, if the Unit accepts it, changed while the system runs) and state, and ``async`` methods that run each time a message arrives on an input stream (``@ez.subscriber``) or that publish to an output stream (``@ez.publisher``). A **Collection** groups Units and other Collections behind streams of its own, so a sub-pipeline can be reused as a single component. One output stream can feed any number of inputs and one input can listen to any number of outputs, so the graph is not limited to a linear chain; it must, however, be acyclic.
+
+A system is declared in plain Python: instantiate the components, list the connections as (output stream, input stream) pairs, and pass both to ``ez.run()``. `ezmsg` places the components in one or more operating-system processes (a Collection's ``process_components()`` chooses which components get their own process), runs each Unit's methods as coroutines on an asyncio event loop, and keeps running until the components finish or the system is interrupted.
+
+A **GraphServer** coordinates the running system. It is a small TCP service, started by ``ez.run()`` when none is already reachable, that holds the graph of topics and connections, tells each subscriber which publishers to listen to (and updates it when the graph changes), creates the shared-memory segments used between processes, and relays settings changes and profiling data. Because the graph lives in the GraphServer rather than inside one script, other processes, including the ``ezmsg`` command-line tools and `ezmsg-dashboard`, can attach to a running system to inspect or modify it.
+
+.. mermaid::
+   :alt: Three ezmsg Units: a source and a filter in one process, a decoder in a second process on the same host, and a viewer on another host. The filter output feeds both the decoder over shared memory and the viewer over TCP; the source-to-filter edge is in-process. Every process is registered with one GraphServer.
+   :caption: An ezmsg graph spanning two processes on one host and a process on a second host. Each edge uses the cheapest transport its endpoints allow; the GraphServer tracks the graph but does not carry the data.
+
+   flowchart LR
+     GS[("GraphServer")]
+     subgraph HOST1["Host A"]
+       subgraph P1["Process 1"]
+         SRC["Source unit"] -->|"in-process (by reference)"| FILT["Filter unit"]
+       end
+       subgraph P2["Process 2"]
+         DEC["Decoder unit"]
+       end
+     end
+     subgraph HOST2["Host B"]
+       subgraph P3["Process 3"]
+         VIEW["Viewer unit"]
+       end
+     end
+     FILT -->|"shared memory"| DEC
+     FILT -->|"TCP"| VIEW
+     GS -.- P1
+     GS -.- P2
+     GS -.- P3
+
+.. dd:ezmsg-graph:end
+
 
 |ezmsg_logo_small| Modular Design
 **********************************************
@@ -97,7 +137,26 @@ When a pipeline is initialised `ezmsg` constructs a directed acyclic graph (DAG)
 
 `Publisher` and `Subscriber` instances are created with a publisher/subscriber design architecture in mind. Each `Publisher` has a list of `Subscriber`\ s it can simultaneously publish to. Similarly, each `Subscriber` has a list of `Publisher`\ s it is listening to. This kind of architecture allows pipelines that are not simply a linear chain of nodes. 
 
-Messaging between `Publisher`\ s and `Subscriber`\ s is facilitated by the `ezmsg GraphServer` through the use of an appropriate messaging protocol identified at initialisation. `Publisher`\ s and `Subscriber`\ s in the same process use local memory cache. Inter-process communication is managed by the shared memory process and otherwise communication is done via TCP. 
+Messaging between `Publisher`\ s and `Subscriber`\ s is facilitated by the `ezmsg GraphServer` through the use of an appropriate messaging protocol identified at initialisation. `Publisher`\ s and `Subscriber`\ s in the same process use local memory cache. Inter-process communication is managed by the shared memory process and otherwise communication is done via TCP.
+
+.. dd:ezmsg-transport:start
+
+Transport, backpressure and zero-copy delivery
+==============================================
+
+`ezmsg` moves each message by the cheapest route the publisher and the subscriber's process allow, and chooses it per connection, so the same graph runs unchanged whether its components share a process, a machine, or a network:
+
+- **Same process**: the publisher hands the subscriber the object itself, by reference. Nothing is serialised or copied.
+- **Different process, same host**: the publisher serialises the message once (pickle protocol 5, so large array buffers are written without an extra copy) into a ring of shared-memory buffers, and sends the subscriber's process only a short notification naming the buffer.
+- **Different host**, or shared memory unavailable: the serialised message is sent over a TCP connection between the two processes.
+
+A process that cannot attach the publisher's shared memory falls back to TCP automatically; TCP can also be forced for a publisher, or for every publisher in a process with the ``EZMSG_FORCE_TCP`` environment variable. Within a receiving process, a message is deserialised once and shared by every subscriber in that process.
+
+Each publisher owns a fixed ring of message buffers (32 by default). A buffer is reused only after every subscriber has finished with the message in it, so when a consumer falls behind, the publisher waits for it (**backpressure**) instead of overwriting or silently discarding data. The publisher logs a warning when this happens. A subscriber that should never slow its source, such as a live display, can declare its input stream ``leaky``: it then receives a private copy of each message, releases the buffer at once, and drops its oldest queued messages when it falls behind.
+
+Ordinary (non-leaky) subscribers receive messages **zero-copy**: the object passed to the subscriber method is the publisher's object, or a view of the shared-memory buffer, or the one deserialised copy shared within the process. Subscribers must therefore treat incoming messages as read-only, and copy any data they intend to modify or republish.
+
+.. dd:ezmsg-transport:end
 
 
 

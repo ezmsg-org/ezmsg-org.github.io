@@ -18,7 +18,9 @@ Each extension is a separate package with its own dependencies, versioning, and 
 |ezmsg_logo_small| Official Extensions
 **************************************
 
-These namespace packages are maintained by the ezmsg organization:
+.. dd:ezmsg-ecosystem:start
+
+The core ``ezmsg`` package provides the runtime, the ``AxisArray`` message type and a few general-purpose utility units. Everything else, from signal processing to device interfaces and tools, is distributed as separately installable extension packages under the shared ``ezmsg.*`` namespace. These are maintained by the ezmsg organization:
 
 .. list-table::
    :header-rows: 1
@@ -100,6 +102,8 @@ These namespace packages are maintained by the ezmsg organization:
      - ZeroMQ pub/sub units for distributed messaging
      - `docs <https://www.ezmsg.org/ezmsg-zmq/>`__
      - `github <https://github.com/ezmsg-org/ezmsg-zmq>`__
+
+.. dd:ezmsg-ecosystem:end
 
 |ezmsg_logo_small| Community Extensions
 ***************************************

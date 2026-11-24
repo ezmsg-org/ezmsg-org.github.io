@@ -14,9 +14,23 @@ About AxisArray
 |ezmsg_logo_small| Why use AxisArray?
 ****************************************
 
-The purpose of including `AxisArray` as part of ezmsg stems from wanting to avoid having to support a vast array of different message types. This is a major cause of bloat with other similar messaging platforms. 
+The purpose of including `AxisArray` as part of ezmsg stems from wanting to avoid having to support a vast array of different message types. This is a major cause of bloat with other similar messaging platforms.
 
-For this to be useful, we have designed `AxisArray` to be convenient and flexible. It is important that it can be used for the many different use cases we have encountered. At its core it stores a numpy N-dimensional array, an array of axis labels, as well as multiple metadata attributes. 
+For this to be useful, we have designed `AxisArray` to be convenient and flexible. It is important that it can be used for the many different use cases we have encountered. At its core it stores a numpy N-dimensional array, an array of axis labels, as well as multiple metadata attributes.
+
+.. dd:ezmsg-axisarray:start
+
+`ezmsg` streams can carry any Python object, but signal-processing components exchange ``AxisArray`` messages. An ``AxisArray`` is an N-dimensional array whose dimensions are named (for example ``("time", "ch")``), together with:
+
+- **axes**: a coordinate system for any named dimension. A ``LinearAxis`` describes regular sampling with an ``offset`` and a ``gain`` (on a time dimension, the timestamp of the first sample and the sample period); a ``CoordinateAxis`` holds explicit values, such as channel labels, electrode positions or the centre frequencies of a spectrum.
+- **attrs**: free-form metadata that travels with the data.
+- **key**: a short string identifying the stream's source, such as a device name.
+
+Because dimensions are named, a component is written against the dimension it operates on rather than against an array position. A filter applies along ``"time"`` wherever that dimension sits and whatever other dimensions are present, so the same component accepts raw ``(time, ch)`` data, a ``(time, ch, freq)`` filter-bank output, or a transposed array. Each transform also updates the axes it changes, so sample timing, sampling rate and channel identity remain available at every point downstream without side channels.
+
+The data array is not tied to NumPy. ``AxisArray`` methods use the Python array API standard (through ``array-api-compat``), so the payload can be a NumPy, CuPy, PyTorch or MLX array, and components written against the array API can process it on the device where it already lives.
+
+.. dd:ezmsg-axisarray:end
 
 
 |ezmsg_logo_small| Description
