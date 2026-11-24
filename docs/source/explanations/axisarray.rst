@@ -25,10 +25,17 @@ For this to be useful, we have designed `AxisArray` to be convenient and flexibl
 - **axes**: a coordinate system for any named dimension. A ``LinearAxis`` describes regular sampling with an ``offset`` and a ``gain`` (on a time dimension, the timestamp of the first sample and the sample period); a ``CoordinateAxis`` holds explicit values, such as channel labels, electrode positions or the centre frequencies of a spectrum.
 - **attrs**: free-form metadata that travels with the data.
 - **key**: a short string identifying the stream's source, such as a device name.
+- **stream_dim**, **segment** and **config_id**: stream bookkeeping. ``stream_dim`` names the dimension along which successive messages continue one another (usually ``"time"``); ``segment`` is a counter that the source changes on the first message that does not continue the previous one, for example after a gap or a reconfiguration; ``config_id`` is a digest of everything about the layout except the length of the stream dimension (dimensions, dtype, channel labels, sampling rate), which changes whenever that layout does. A stateful component compares both with the previous message's values to decide when to reset, without inspecting the array.
 
 Because dimensions are named, a component is written against the dimension it operates on rather than against an array position. A filter applies along ``"time"`` wherever that dimension sits and whatever other dimensions are present, so the same component accepts raw ``(time, ch)`` data, a ``(time, ch, freq)`` filter-bank output, or a transposed array. Each transform also updates the axes it changes, so sample timing, sampling rate and channel identity remain available at every point downstream without side channels.
 
 The data array is not tied to NumPy. ``AxisArray`` methods use the Python array API standard (through ``array-api-compat``), so the payload can be a NumPy, CuPy, PyTorch or MLX array, and components written against the array API can process it on the device where it already lives.
+
+.. figure:: ../_static/_images/axisarray_anatomy.png
+   :width: 100%
+   :alt: Diagram of an AxisArray. It lists the eight fields (data, dims, axes, attrs, key, stream_dim, segment, config_id) with their types; shows a 128-sample by 32-channel example in which the time dimension has a LinearAxis at 500 Hz and the channel dimension a CoordinateAxis of electrode labels; shows successive messages keeping segment 0 until a gap, after which segment becomes 1; gives the code that constructs the example; and shows that AxisArray, LinearAxis and CoordinateAxis derive from ArrayWithNamedDims and AxisBase.
+
+   Anatomy of an ``AxisArray``: its fields, a two-dimensional time × channel example with its coordinate axes, how ``segment`` marks a break between successive messages, and the related types.
 
 .. dd:ezmsg-axisarray:end
 
